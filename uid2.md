@@ -17,6 +17,8 @@ UID2 Operators manage a complex array of responsibilities spanning multiple func
 
 UID2 generation represents the core operational function of operators, involving the deterministic assignment of DII to specific salt buckets and the subsequent application of cryptographic hashing to create raw UID2s[2][13]. This process must be both deterministic—ensuring the same DII always maps to the same salt bucket—and secure, preventing unauthorized parties from reverse-engineering the original PII[10][8].
 
+<img src="image_2.png" />
+
 ## Process Flow and Sequence Analysis
 The UID2 operator salt bucket management process follows a sophisticated multi-phase workflow encompassing initialization, UID2 generation, salt management, and ongoing security maintenance[6][13]. Each phase contains five distinct process steps, creating a comprehensive 20-step operational framework.The sequence diagram illustrates the complex interactions between four primary actors: the UID2 Core Service, UID2 Operator, Advertiser/Data Provider, and S3 Storage.The process begins with operator startup and attestation, where the operator must prove its execution within a secure enclave environment[6]. Upon successful attestation, the Core Service provides secure S3 URLs enabling the operator to retrieve encrypted salt buckets and associated cryptographic materials[6].The UID2 generation phase represents the most frequent operational activity, occurring with each participant request for identifier creation[13]. When an advertiser or data provider submits DII through the POST /identity/map endpoint, the operator performs several critical steps: normalizing and hashing the DII if necessary, deterministically assigning it to a specific salt bucket, applying the bucket's salt value combined with cryptographic hashing to create a raw UID2, and returning both the raw UID2 and associated bucket ID to the requesting participant[14][13].
 
@@ -54,35 +56,36 @@ The framework's success depends on the reliable operation of approximately one m
 
 The technical complexity of this system underscores the sophisticated engineering required to replace third-party cookies while maintaining advertiser effectiveness and user privacy[1]. As the digital advertising ecosystem continues evolving, the UID2 operator salt bucket management framework provides a compelling model for balancing commercial requirements with privacy imperatives[1][2].
 
-[1] https://unifiedid.com/docs/intro
-[2] https://unifiedid.com/docs/ref-info/ref-operators-public-private
-[3] https://unifiedid.com/docs/ref-info/uid-components
-[4] https://unifiedid.com/docs/sdks/sdk-ref-python
-[5] https://iabtechlab.com/working-together-to-support-uid2/
-[6] https://unifiedid.com/docs/guides/operator-guide-aws-marketplace
-[7] https://unifiedid.com/docs/guides/operator-guide-azure-enclave
-[8] http://itega.org/wp-content/uploads/2021/01/Trade-Desk-UID2-Overview-Dec-2020.pdf
-[9] https://docs.amperity.com/reference/uid2.html
-[10] https://github.com/IABTechLab/uid2docs/blob/main/docs/ref-info/glossary-uid.md
-[11] https://www.adexchanger.com/online-advertising/next-up-on-the-trade-desks-uid-2-0-partner-parade-aws-and-pharma-marketing-platform-lasso/
-[12] https://mozilla.github.io/ppa-docs/swan_uid2_report.pdf
-[13] https://unifiedid.com/docs/ref-info/ref-tokens
-[14] https://unifiedid.com/docs/endpoints/post-identity-buckets
-[15] https://unifiedid.com/docs/getting-started/gs-faqs
-[16] https://www.nutritionintl.org/wp-content/uploads/2017/06/Achieving-Universal-Salt-Iodization-Lessons-learned-and-Emerging-Issues.pdf
-[17] https://github.com/treasure-data/uid2
-[18] https://documentation.suse.com/suma/4.3/en/suse-manager/specialized-guides/salt/salt-command.html
-[19] https://aws.amazon.com/marketplace/pp/prodview-wdbccsarov5la
-[20] https://unifiedid.com/docs/summary-doc-v2
-[21] https://github.com/IABTechLab/uid2docs/blob/main/docs/intro.md
-[22] https://unifiedid.com/docs/ref-info/updates-doc
-[23] https://unifiedid.com/docs/endpoints/summary-endpoints
-[24] https://docs.tealium.com/server-side/functions/event-visitor-functions/uid2/
-[25] https://unifiedid.com/docs/overviews/participants-overview
-[26] https://unifiedid.com/docs/guides/integration-snowflake
-[27] https://groups.google.com/g/opentsdb/c/7rPpuvApfnY
-[28] https://stackoverflow.com/questions/77136161/how-can-i-generate-a-signed-32-bit-integer-from-a-uuid-and-salt-string
-[29] https://unifiedid.com/docs/guides/integration-options-private-operator
-[30] https://github.com/IABTechLab/uid2-operator
-[31] https://unifiedid.com/docs/ref-info/ref-how-uid-is-created
+
+[1] https://unifiedid.com/docs/intro </br>
+[2] https://unifiedid.com/docs/ref-info/ref-operators-public-private </br>
+[3] https://unifiedid.com/docs/ref-info/uid-components </br>
+[4] https://unifiedid.com/docs/sdks/sdk-ref-python </br>
+[5] https://iabtechlab.com/working-together-to-support-uid2/ </br>
+[6] https://unifiedid.com/docs/guides/operator-guide-aws-marketplace </br>
+[7] https://unifiedid.com/docs/guides/operator-guide-azure-enclave </br>
+[8] http://itega.org/wp-content/uploads/2021/01/Trade-Desk-UID2-Overview-Dec-2020.pdf </br>
+[9] https://docs.amperity.com/reference/uid2.html </br>
+[10] https://github.com/IABTechLab/uid2docs/blob/main/docs/ref-info/glossary-uid.md </br>
+[11] https://www.adexchanger.com/online-advertising/next-up-on-the-trade-desks-uid-2-0-partner-parade-aws-and-pharma-marketing-platform-lasso/ </br>
+[12] https://mozilla.github.io/ppa-docs/swan_uid2_report.pdf </br>
+[13] https://unifiedid.com/docs/ref-info/ref-tokens </br>
+[14] https://unifiedid.com/docs/endpoints/post-identity-buckets </br>
+[15] https://unifiedid.com/docs/getting-started/gs-faqs </br>
+[16] https://www.nutritionintl.org/wp-content/uploads/2017/06/Achieving-Universal-Salt-Iodization-Lessons-learned-and-Emerging-Issues.pdf </br>
+[17] https://github.com/treasure-data/uid2 </br>
+[18] https://documentation.suse.com/suma/4.3/en/suse-manager/specialized-guides/salt/salt-command.html </br>
+[19] https://aws.amazon.com/marketplace/pp/prodview-wdbccsarov5la </br>
+[20] https://unifiedid.com/docs/summary-doc-v2 </br>
+[21] https://github.com/IABTechLab/uid2docs/blob/main/docs/intro.md </br>
+[22] https://unifiedid.com/docs/ref-info/updates-doc </br>
+[23] https://unifiedid.com/docs/endpoints/summary-endpoints </br>
+[24] https://docs.tealium.com/server-side/functions/event-visitor-functions/uid2/ </br>
+[25] https://unifiedid.com/docs/overviews/participants-overview </br>
+[26] https://unifiedid.com/docs/guides/integration-snowflake </br>
+[27] https://groups.google.com/g/opentsdb/c/7rPpuvApfnY </br>
+[28] https://stackoverflow.com/questions/77136161/how-can-i-generate-a-signed-32-bit-integer-from-a-uuid-and-salt-string </br>
+[29] https://unifiedid.com/docs/guides/integration-options-private-operator </br>
+[30] https://github.com/IABTechLab/uid2-operator </br>
+[31] https://unifiedid.com/docs/ref-info/ref-how-uid-is-created </br>
 [32] https://unifiedid.com/docs/endpoints/post-identity-map
