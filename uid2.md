@@ -20,6 +20,7 @@ The UID2 operator salt bucket management process follows a sophisticated multi-p
 
 Salt management operates as a continuous background process, with the Core Service rotating approximately 2,740 buckets daily according to a randomized schedule[11][8]. Participants monitor these rotations through the POST /identity/buckets endpoint, which returns a list of bucket IDs that have been rotated since a specified timestamp[14]. This monitoring enables participants to identify which UID2s require regeneration due to salt bucket rotation[15][14].
 
+<img src="process_seq.png"/>
 ## Security Architecture and Trust Model
 The security architecture of UID2 operator salt bucket management incorporates multiple layers of protection designed to prevent unauthorized access to sensitive cryptographic materials[6]. All Private Operators must operate within hardware-backed trusted execution environments (TEEs), such as AWS Nitro Enclaves, Google Cloud Confidential Space, or Microsoft Azure Confidential Containers[6][7].
 
