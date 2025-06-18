@@ -7,6 +7,8 @@ The UID2 ecosystem consists of four primary architectural components, each servi
 
 UID2 Operators exist in two distinct categories: Public Operators and Private Operators[2]. Public Operators, such as The Trade Desk's implementation, provide publicly available instances of the Operator Service accessible to all relevant UID2 participants[2]. Private Operators, conversely, represent private instances hosted exclusively by specific entities within secure enclaves, offering enhanced control over data processing and latency optimization[6][7].
 
+<img src="image.png" />
+
 ## Salt Bucket Architecture and Operational Scale
 The scale of UID2 salt bucket operations represents one of the most impressive aspects of the framework's technical architecture[8][9]. The system manages approximately one million unique salt buckets, each containing a single high-entropy secret salt value used for generating raw UID2s[10][9]. This massive distributed architecture ensures robust security through diversity while maintaining deterministic assignment of DII to specific buckets[10].The rotation mechanism operates on a carefully orchestrated schedule designed to balance security with operational efficiency[11][8]. Approximately 2,740 salt buckets rotate daily, representing roughly 1/365th of the total bucket population[8][11]. This rotation occurs at random times throughout each day to prevent predictable patterns that could be exploited by malicious actors[11][12]. Each individual salt bucket completes its rotation cycle once every 6-12 months, ensuring that all salt values are eventually refreshed while maintaining system stability[8][11].
 
